@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Creation</title>
+    <style>
+    body{
+        background-image: url("bg_1.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    form {
+    align-items: center;
+    }
+
+    input[type="username"],
+    input[type="password"] {
+        width: 300px;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 1px 1px 5px grey;
+    }
+
+    input[type="submit"] {
+        width: 320px;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #6245c2;
+    }
+
+    .error-message {
+        color: red;
+        margin: 10px 0;
+    }
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #333;
+        color: white;
+        padding: 10px;
+    }
+    h1{
+        margin: 0;
+        color: yellow;
+    }
+    a{
+        margin: 0;
+        color: yellow;
+    }
+    label {
+        color: chartreuse;
+    }
+    .login{
+        margin: auto;
+		width: 400px;
+		height: 270px;
+		background-image: linear-gradient(#FEAB3B,#961B90,#681CE6);
+		border-radius: 10px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+		padding: 20px;
+    }
+    </style>
+</head>
+<body>
+    <div class="login">
+    <center>
+        <h1>Welcome! Create Your Account</h1>
+        <br><br>
+        <form action="encrypt_store.php" method="POST">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+            <br><br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+            <br><br>
+            <input type="submit" value="Login">
+            <br><br>
+        </form>
+        <h1>Already Have An Account ?</h1>
+        <br>
+        <h2><a href="login.html">Login To Your Account</a></h2>
+    </center>
+    </div>
+</body>
+</html>

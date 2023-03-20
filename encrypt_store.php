@@ -2,6 +2,7 @@
 require_once('vendor/autoload.php');
 require_once('algo.php');
 use algo\process;
+//use phpseclib\Crypt\AES;
 use phpseclib\Crypt\Hash;
 
 $host_name = 'localhost';
@@ -22,29 +23,12 @@ $encrypted_password = $cipher->process($user_passwd);
 $hash_obj = new phpseclib\Crypt\Hash();
 $hashed_password = $hash_obj->hash($encrypted_password);
 
-$statement = $s_command->prepare("SELECT hashed_password FROM cust_details WHERE username=?");
-$statement->bind_param("s", $user_name);
+$statement = $s_command->prepare("INSERT INTO cust_details (username, hashed_password) VALUES (?, ?)");
+$statement->bind_param("ss", $user_name, $hashed_password);
 $statement->execute();
-$statement->store_result();
 
-if ($statement->num_rows == 1) {
-    $statement->bind_result($stored_hashed_password);
-    $statement->fetch();
-
-    if ($stored_hashed_password === $hashed_password)
-    {
-        header("Location: success.html");
-        exit;
-    }
-    else
-    {
-        echo '<script>window.location.href="login.html",alert("Wrong Password");</script>';
-        exit;
-    }
-}
-else
-{
-    echo '<script>window.location.href="login.html",alert("User Does Not Exist");</script>';
+if ($statement->affected_rows == 1) {
+    header("Location: success.html");
     exit;
 }
 

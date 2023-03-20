@@ -1,0 +1,7 @@
+{
+    "require": {
+        "phpseclib/phpseclib": "^2.0",
+        "spomky-labs/php-crypto":"^1.0"
+
+    }
+}
